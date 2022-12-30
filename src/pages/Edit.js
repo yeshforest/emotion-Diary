@@ -1,11 +1,10 @@
-import { useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 
 const Edit = () => {
+  const navigate = useNavigate();
   const [searchParams, setSearchParams] = useSearchParams(); //querystring set으로 qs바꾸기 가능
   const id = searchParams.get("id");
   const mode = searchParams.get("mode");
-  console.log("ID : ", id);
-  console.log("Mode : ", mode);
 
   return (
     <div>
@@ -14,6 +13,8 @@ const Edit = () => {
       <button onClick={() => setSearchParams({ who: "yeshforest" })}>
         qs 바꾸기
       </button>
+      <button onClick={() => navigate("Home")}>Home으로 가기</button>
+      <button onClick={() => navigate(-1)}>뒤로가기</button>
     </div>
   );
 };
