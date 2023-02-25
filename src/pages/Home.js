@@ -6,6 +6,7 @@ import MyButton from "./../components/MyButton";
 import DiaryList from "./../components/DiaryList";
 const Home = () => {
   const diaryList = useContext(DiaryStateContext);
+  console.log("this is diaryStateContext", DiaryStateContext);
   console.log("it is diaryList: ", diaryList);
   const [data, setData] = useState([]);
   const [curDate, setCurDate] = useState(new Date());
@@ -22,7 +23,10 @@ const Home = () => {
       const lastDay = new Date(
         curDate.getFullYear(),
         curDate.getMonth() + 1,
-        0 //이번년도 다음달의 0일 (오늘 월의 마지막 날짜)
+        0, //이번년도 다음달의 0일 (오늘 월의 마지막 날짜)
+        23,
+        59,
+        59
       ).getTime();
 
       setData(
