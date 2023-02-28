@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import MyButton from "./MyButton";
 import DiaryItem from "./DiaryItem";
@@ -7,7 +7,7 @@ const sortOptionList = [
   { value: "latest", name: "최신순" },
   { value: "oldest", name: "오래된 순" },
 ];
-const ControlMenu = ({ value, onChange, optionList }) => {
+const ControlMenu = React.memo(({ value, onChange, optionList }) => {
   return (
     <select
       className="ControlMenu"
@@ -21,7 +21,7 @@ const ControlMenu = ({ value, onChange, optionList }) => {
       ))}
     </select>
   );
-};
+});
 
 const filterOptionList = [
   { value: "all", name: "전부 다" },
@@ -33,6 +33,13 @@ const DiaryList = ({ diaryList }) => {
   const navigate = useNavigate();
   const [sortType, setSortType] = useState("latest");
   const [filter, setFilter] = useState("all"); //감정 필터링
+
+  //핸들러 함수를 만들어 사용하면 사용시 이 함수가 다시 생성된다.
+  //핸들러 함수를 만들지 않아도 될 땐 만들지 않아도 된다.
+  /*const handleSetSortType = (sortType) => {
+    setSortType(sortType); 
+  };*/
+
   const getProcessedDiaryList = () => {
     const filterCallBack = (item) => {
       if (filter === "good") {

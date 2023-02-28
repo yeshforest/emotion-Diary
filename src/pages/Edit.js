@@ -18,7 +18,6 @@ const Edit = () => {
 
       if (targetDiary) {
         setOriginData(targetDiary);
-        console.log("targetDiary.date", targetDiary.date);
       } else {
         alert("없는 일기입니다.");
         navigate("/", { replace: true });

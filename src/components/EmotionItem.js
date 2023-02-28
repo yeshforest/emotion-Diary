@@ -1,8 +1,9 @@
+import React from "react";
 const EmotionItem = ({
   emotion_id,
   emotion_img,
   emotion_descript,
-  onClick,
+  onClick, //함수는 useState함수를 통해 전달받은 상태변화 함수가 아니라면 다시 생성된다.
   isSelected,
 }) => {
   return (
@@ -18,4 +19,4 @@ const EmotionItem = ({
     </div>
   );
 };
-export default EmotionItem;
+export default React.memo(EmotionItem);
